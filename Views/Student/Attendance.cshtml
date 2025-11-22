@@ -1,0 +1,35 @@
+@model IEnumerable<CollegeManagementSystem.Models.AttendanceRecord>
+@{
+    ViewData["Title"] = "My Attendance";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>📅 Attendance Summary</h2>
+    <hr />
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Date</th>
+                <th>Course</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var record in Model)
+        {
+            var statusClass = record.Status == "Present" ? "text-success" : "text-danger";
+            <tr>
+                <td>@record.Date.ToShortDateString()</td>
+                <td>@record.CourseName</td>
+                <td class="@statusClass">@record.Status</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="alert alert-info mt-3">
+        <strong>Total Attendance:</strong> @ViewBag.AttendancePercent%
+    </div>
+</div>

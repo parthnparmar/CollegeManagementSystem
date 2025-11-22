@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Analytics Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Attendance Analytics Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <canvas id="courseChart"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="trendChart"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const courseCtx = document.getElementById('courseChart').getContext('2d');
+        new Chart(courseCtx, {
+            type: 'pie',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.CourseNames)),
+                datasets: [{
+                    data: @Html.Raw(Json.Serialize(ViewBag.CourseAttendance)),
+                    backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0']
+                }]
+            }
+        });
+
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.Months)),
+                datasets: [{
+                    label: 'Average Attendance %',
+                    data: @Html.Raw(Json.Serialize(ViewBag.MonthlyTrends)),
+                    fill: false,
+                    borderColor: 'rgba(75,192,192,1)',
+                    tension: 0.2
+                }]
+            }
+        });
+    </script>
+}

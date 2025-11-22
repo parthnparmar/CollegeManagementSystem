@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Analytics Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Analytics Reports</h2>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Course</th>
+            <th>Average Attendance (%)</th>
+            <th>Top Performer</th>
+            <th>Lowest Performer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+            <tr>
+                <td>@report.CourseName</td>
+                <td>@report.AverageAttendance</td>
+                <td>@report.TopStudent</td>
+                <td>@report.LowestStudent</td>
+            </tr>
+        }
+    </tbody>
+</table>

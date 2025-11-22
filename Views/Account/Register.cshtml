@@ -1,0 +1,309 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "Register - Elite College";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .register-wrapper {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+            margin: 2rem;
+        }
+
+        .register-form {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .register-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(240, 147, 251, 0.8), rgba(245, 87, 108, 0.8));
+        }
+
+        .image-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .image-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .image-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #f5576c;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 1rem;
+            top: 2.2rem;
+            color: #666;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .form-footer a {
+            color: #f5576c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        @@media (max-width: 768px) {
+            .register-wrapper {
+                flex-direction: column;
+                margin: 1rem;
+            }
+            
+            .register-image {
+                min-height: 200px;
+                order: -1;
+            }
+            
+            .image-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .register-form {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="register-wrapper">
+        <div class="register-form">
+            <div class="form-header">
+                <h1>Create Account</h1>
+                <p>Join our academic community today</p>
+            </div>
+            
+            <form asp-action="Register" method="post">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <div class="form-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" name="FullName" id="fullname" class="form-control" placeholder="Enter your full name" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="form-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" name="Email" id="email" class="form-control" placeholder="Enter your email" required />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="form-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" name="Password" id="password" class="form-control" placeholder="Create password" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <div class="form-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" name="ConfirmPassword" id="confirmpassword" class="form-control" placeholder="Confirm password" required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+
+                <div class="form-footer">
+                    <p>Already have an account? <a asp-action="Login">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="register-image">
+            <div class="image-content">
+                <h2>Join Elite College</h2>
+                <p>Start your journey towards academic excellence and innovation</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>Welcome, Admin</h2>
+    <hr />
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4>👩‍🎓 Students</h4>
+                    <p>@ViewBag.TotalStudents</p>
+                    <a asp-controller="Student" asp-action="Index" class="btn btn-outline-primary btn-sm">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4>👨‍🏫 Teachers</h4>
+                    <p>@ViewBag.TotalTeachers</p>
+                    <a asp-controller="Teacher" asp-action="Index" class="btn btn-outline-primary btn-sm">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4>📚 Courses</h4>
+                    <p>@ViewBag.TotalCourses</p>
+                    <a asp-controller="Course" asp-action="Index" class="btn btn-outline-primary btn-sm">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4>🏫 Departments</h4>
+                    <p>@ViewBag.TotalDepartments</p>
+                    <a asp-controller="Department" asp-action="Index" class="btn btn-outline-primary btn-sm">Manage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

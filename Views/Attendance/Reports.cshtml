@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Attendance Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Attendance Reports</h2>
+
+<form method="get">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Select Course</label>
+            <select class="form-select" name="CourseId">
+                @foreach (var course in ViewBag.Courses)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2 align-self-end">
+            <button class="btn btn-success">Generate Report</button>
+        </div>
+    </div>
+</form>
+
+<div class="mt-4">
+    <canvas id="attendanceChart"></canvas>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('attendanceChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.StudentNames)),
+                datasets: [{
+                    label: 'Attendance %',
+                    data: @Html.Raw(Json.Serialize(ViewBag.AttendancePercentages)),
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                }]
+            }
+        });
+    </script>
+}

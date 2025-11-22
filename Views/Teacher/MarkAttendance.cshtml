@@ -1,0 +1,49 @@
+@model IEnumerable<CollegeManagementSystem.Models.Student>
+@{
+    ViewData["Title"] = "Mark Attendance";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>🕒 Mark Attendance</h2>
+    <hr />
+
+    <form asp-action="SaveAttendance" method="post">
+        <div class="form-group mb-3">
+            <label>Select Course</label>
+            <select name="CourseId" class="form-control" required>
+                @foreach (var course in ViewBag.Courses)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </select>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.RollNumber</td>
+                    <td>@student.Name</td>
+                    <td>
+                        <select name="AttendanceStatus[@student.Id]" class="form-select">
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                        </select>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary mt-2">Save Attendance</button>
+    </form>
+</div>

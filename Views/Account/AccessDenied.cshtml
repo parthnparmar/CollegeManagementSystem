@@ -1,0 +1,21 @@
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="denied-container text-center">
+    <h2>🚫 Access Denied</h2>
+    <p>You don’t have permission to access this page.</p>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">Go to Home</a>
+</div>
+
+<style>
+    .denied-container {
+        max-width: 500px;
+        margin: 100px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+</style>

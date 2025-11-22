@@ -1,0 +1,41 @@
+@model CollegeManagementSystem.Models.Student
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>👤 Profile</h2>
+    <hr />
+
+    <div class="card shadow-sm p-4">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="@Model.PhotoPath" class="rounded-circle img-thumbnail mb-3" width="150" height="150" />
+                <h4>@Model.Name</h4>
+                <p>@Model.RollNumber</p>
+            </div>
+
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <th>Department</th>
+                        <td>@Model.Department</td>
+                    </tr>
+                    <tr>
+                        <th>Year</th>
+                        <td>@Model.Year</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>@Model.Phone</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

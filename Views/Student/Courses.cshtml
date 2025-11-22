@@ -1,0 +1,32 @@
+@model IEnumerable<CollegeManagementSystem.Models.Course>
+@{
+    ViewData["Title"] = "My Courses";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>📚 My Courses</h2>
+    <hr />
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+                <th>Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Code</td>
+                <td>@course.Name</td>
+                <td>@course.Credits</td>
+                <td>@course.TeacherName</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

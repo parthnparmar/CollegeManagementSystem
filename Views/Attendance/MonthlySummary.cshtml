@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Monthly Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Monthly Attendance Summary</h2>
+
+<form method="get">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Month</label>
+            <input type="month" name="Month" class="form-control" />
+        </div>
+        <div class="col-md-2 align-self-end">
+            <button class="btn btn-primary">View Summary</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Student</th>
+            <th>Total Days</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var summary in Model)
+        {
+            <tr>
+                <td>@summary.StudentName</td>
+                <td>@summary.TotalDays</td>
+                <td>@summary.PresentDays</td>
+                <td>@summary.AbsentDays</td>
+                <td>
+                    <span class="badge @(summary.Percentage < 75 ? "bg-danger" : "bg-success")">
+                        @summary.Percentage %
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

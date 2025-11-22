@@ -1,0 +1,32 @@
+@model IEnumerable<CollegeManagementSystem.Models.AttendanceReport>
+@{
+    ViewData["Title"] = "Attendance Reports";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>📈 Attendance Reports</h2>
+    <hr />
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-info">
+            <tr>
+                <th>Course</th>
+                <th>Total Students</th>
+                <th>Average Attendance (%)</th>
+                <th>Low Attendance Count</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var report in Model)
+        {
+            <tr>
+                <td>@report.CourseName</td>
+                <td>@report.TotalStudents</td>
+                <td>@report.AveragePercent%</td>
+                <td>@report.LowAttendanceCount</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

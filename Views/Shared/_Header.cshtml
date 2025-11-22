@@ -1,0 +1,17 @@
+<header class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-primary" href="/Home/Index">
+            <i class="fa-solid fa-graduation-cap"></i> CollegeMS
+        </a>
+
+        <div class="d-flex align-items-center">
+            <span class="me-3 text-secondary">Welcome, @User.Identity?.Name</span>
+
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </form>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Mark Attendance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Mark Attendance</h2>
+
+<form asp-action="Mark" method="post">
+    <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input type="date" name="Date" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Course</label>
+        <select name="CourseId" class="form-select">
+            @foreach (var course in ViewBag.Courses)
+            {
+                <option value="@course.Id">@course.Name</option>
+            }
+        </select>
+    </div>
+
+    <h4 class="mt-4">Students</h4>
+    <table class="table table-bordered">
+        <thead class="table-secondary">
+            <tr>
+                <th>Student Name</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in ViewBag.Students)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>
+                        <input type="checkbox" name="Attendance[@student.Id]" value="true" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Submit Attendance</button>
+</form>

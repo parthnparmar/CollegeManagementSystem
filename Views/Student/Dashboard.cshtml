@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Student Dashboard";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>👋 Welcome, @User.Identity?.Name</h2>
+    <hr />
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5>📚 Total Courses</h5>
+                    <h3>@ViewBag.TotalCourses</h3>
+                    <a asp-action="Courses" class="btn btn-outline-primary btn-sm mt-2">View Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5>🕒 Attendance %</h5>
+                    <h3>@ViewBag.AttendancePercent%</h3>
+                    <a asp-action="Attendance" class="btn btn-outline-success btn-sm mt-2">View Attendance</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5>👤 Profile</h5>
+                    <h3>@ViewBag.StudentName</h3>
+                    <a asp-action="Profile" class="btn btn-outline-info btn-sm mt-2">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

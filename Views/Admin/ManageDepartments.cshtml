@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Manage Departments";
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <h2>Manage Departments</h2>
+    <a asp-action="AddDepartment" class="btn btn-success mb-3">Add Department</a>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Department Name</th>
+                <th>Head of Department</th>
+                <th>Total Courses</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>@dept.Name</td>
+                <td>@dept.HODName</td>
+                <td>@dept.CourseCount</td>
+                <td>
+                    <a asp-action="EditDepartment" asp-route-id="@dept.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="DeleteDepartment" asp-route-id="@dept.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
